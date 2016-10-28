@@ -2,6 +2,6 @@
 
 @section("content")
 
-  <h1>Never Stop Learn, Rocking \m/</h1>
+  <h1>this is page articles</h1>
 
 @stop

@@ -15,3 +15,5 @@ Route::get('/', function () {
 });
 Route::resource('upload', 'UploadController');
 Route::resource('articles', 'ArticlesController');
+Route::resource('comments', 'CommentController');
+Route::resource('imports', 'ImportController');

@@ -15,7 +15,7 @@
 
       <br/>
 
-      {!! Form::text('deskripsi', null,array('class' => 'form-control','placeholder'=>'Add Title')) !!}
+      {!! Form::text('deskripsi', null,array('class' => 'form-control','placeholder'=>'Add Title','required')) !!}
 
     </div>
 
@@ -23,7 +23,7 @@
 
       <br/>
 
-      {!! Form::file('foto', array('class' => 'foto')) !!}
+      {!! Form::file('foto', array('class' => 'foto','required')) !!}
 
 
     </div>
@@ -32,7 +32,7 @@
 
       <br/>
 
-      <button type="submit" class="btn btn-info">Upload Image</button>
+     {!! Form::submit('Save', array('class' => 'btn btn-raised btn-primary')) !!}
 
 
     </div>

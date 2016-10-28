@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Article;
+use App\Comment;
+use Session;
 class ArticlesController extends Controller
 {
     /**
@@ -12,10 +14,14 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-    }
 
+    {
+       $articles = Article::all();
+
+    return view('articles.index')->with('articles', $articles);
+
+        
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -34,7 +40,11 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       Article::create($request->all());
+
+       Session::flash("notice", "Article success created");
+
+       return redirect()->route("articles.index");
     }
 
     /**
@@ -45,7 +55,9 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        //
+         $article = Article::find($id);
+
+    return view('articles.show')->with('article', $article);
     }
 
     /**
@@ -56,7 +68,9 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        //
+       $article = Article::find($id);
+
+    return view('articles.edit')->with('article', $article);
     }
 
     /**
@@ -68,7 +82,11 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Article::find($id)->update($request->all());
+
+    Session::flash("notice", "Article success updated");
+
+    return redirect()->route("articles.show", $id);
     }
 
     /**
@@ -79,6 +97,10 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+       Article::destroy($id);
+
+    Session::flash("notice", "Article success deleted");
+
+    return redirect()->route("articles.index");
     }
 }
